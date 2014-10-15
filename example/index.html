@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timeline Example</title>
+  <link href="../usableTimeline.css" type="text/css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="../dateFormat.js"></script>
+  <script src="../dateWrapper.js"></script>
+  <script src="../usableTimeline.js"></script>
+  <script>
+    $(document).ready(function() {
+      var points = [
+        {
+          date: "1968",
+          content: "Brian May and Tim Staffell decide to form a band, Smile."
+        },
+        {
+          date: "1970",
+          content: "Tim Staffell leaves Smile, Farrokh Bulsaria joins the band. Band renames itself to Queen. Farrokh Bulsaria goes by the name Freddie."
+        },
+        {
+          date: "July 1973",
+          content: "Queen releases their debut album, Queen."
+        },
+        {
+          date: "March 8, 1974",
+          content: "Queen II is released. Album contains hits like Bohemian Rhapsody and One Vision."
+        }
+      ];
+      var timeline = new Timeline($('#timeline'), points);
+    });
+  </script>
+</head>
+<body>
+  <div id="timeline"></div>
+</body>
+</html>
