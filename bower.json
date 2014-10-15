@@ -1,0 +1,21 @@
+{
+  "name": "timeline",
+  "version": "0.0.0",
+  "homepage": "https://github.com/phase2/timeline",
+  "authors": [
+    "Brandon Morrison <brandon@brandonmorrison.com>"
+  ],
+  "description": "Simple javascript library for rendering a timeline",
+  "main": "usableTimeline.js",
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
