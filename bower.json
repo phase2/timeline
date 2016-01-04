@@ -6,7 +6,12 @@
     "Brandon Morrison <brandon@brandonmorrison.com>"
   ],
   "description": "Simple javascript library for rendering a timeline",
-  "main": "usableTimeline.js",
+  "main": [
+    "dateFormat.js",
+    "dateWrapper.js",
+    "usableTimeline.css",
+    "usableTimeline.js"
+  ],
   "license": "Apache-2.0",
   "ignore": [
     "**/.*",
