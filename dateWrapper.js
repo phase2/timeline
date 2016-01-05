@@ -19,7 +19,7 @@ var DateWrapper = function(date) {
   } else {
     this.date = NaN;
   }
-}
+};
 
 DateWrapper.days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 DateWrapper.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -78,7 +78,7 @@ DateWrapper.addYear = function(date) {
     newDate = matches[1] + ', ' + year + (matches[6] ? ' ' + matches[6] : '');
   }
   return newDate;
-}
+};
 
 DateWrapper.convertCE = function(date) {
   if (typeof(date.match) != 'function') { return date; }
@@ -99,39 +99,40 @@ DateWrapper.convertCE = function(date) {
   }
 
   return date;
-}
+};
 
-DateWrapper.prototype = {
-  print : function(pattern, utc, bceFormat, ceFormat) {
-    if (!this.date instanceof Date || isNaN(this.date)) { return NaN; }
-    var curYear = this.date.getUTCFullYear(),
-        isBCE = false,
-        clone = new Date(this.valueOf());
+DateWrapper.prototype.print = function(pattern, utc, bceFormat, ceFormat) {
+  if (!this.date instanceof Date || isNaN(this.date)) { return NaN; }
+  var curYear = this.date.getUTCFullYear(),
+    isBCE = false,
+    clone = new Date(this.valueOf());
 
-    if (curYear < 0) {
-      clone.setUTCFullYear(Math.abs(curYear));
-      isBCE = true;
-    }
-
-    pattern = pattern || dateFormat.masks.mediumDate;
-    bceFormat = bceFormat == null ? 'BCE' : bceFormat;
-    ceFormat = ceFormat == null ? '' : ceFormat;
-
-    pattern = pattern.replace('yyyy', 'yyyy \'' + (isBCE ? bceFormat : ceFormat) + '\'');
-    var string = dateFormat(+clone, pattern, utc);
-
-    return string.trim();
-  },
-  toString : function() {
-    return this.print();
-  },
-  valueOf : function() {
-    if (this.date instanceof Date) {
-      return this.date.getTime();
-    }
-    return NaN;
-  },
-  getTime : function() {
-    return this.valueOf();
+  if (curYear < 0) {
+    clone.setUTCFullYear(Math.abs(curYear));
+    isBCE = true;
   }
-}
+
+  pattern = pattern || dateFormat.masks.mediumDate;
+  bceFormat = bceFormat == null ? 'BCE' : bceFormat;
+  ceFormat = ceFormat == null ? '' : ceFormat;
+
+  pattern = pattern.replace('yyyy', 'yyyy \'' + (isBCE ? bceFormat : ceFormat) + '\'');
+  var string = dateFormat(+clone, pattern, utc);
+
+  return string.trim();
+};
+
+DateWrapper.prototype.toString = function() {
+  return this.print();
+};
+
+DateWrapper.prototype.valueOf = function() {
+  if (this.date instanceof Date) {
+    return this.date.getTime();
+  }
+  return NaN;
+};
+
+DateWrapper.prototype.getTime = function() {
+  return this.valueOf();
+};
